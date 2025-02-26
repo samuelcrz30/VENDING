@@ -1,6 +1,12 @@
 def run(input_file: str, output_file: str) -> None:
     with open(input_file) as operations:
-        operations_list = operations.readlines()
+        line = operations.readline()
+        operation = line[:1]
+        ## match case con las 4 operaciones
+        if operation == 'M':
+            money_sum()  ## cargar dinero
+        if operation == 'P':
+            change_price()  ## cambiar precio producto
 
 
 maquina = {'balance': 0, 'products': {'': {'stock': 0, 'price': 0}}}
