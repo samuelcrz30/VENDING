@@ -3,7 +3,7 @@ def run(input_file: str, output_file: str) -> None:
         operations_list = operations.readlines()
 
 
-maquina = {'balance': 0, 'products': {}}
+maquina = {'balance': 0, 'products': {'': {'stock': 0, 'price': 0}}}
 
 
 def money_sum(op_list: list):
@@ -16,7 +16,7 @@ def money_sum(op_list: list):
 def change_price(op_list: list):
     if op_list[0] == 'P':
         product = op_list[1]
-        maquina['products'][product]
+        maquina['products'][product]['price'] = op_list[2]
 
 
 # DO NOT TOUCH THE CODE BELOW
