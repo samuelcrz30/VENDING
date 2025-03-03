@@ -17,7 +17,7 @@ def change_price(machine: dict, product, price):
     machine['products'][product] = int(price)
 
 
-def push_money(machine: dict, money: str):
+def push_money(machine: dict, money):
     machine['balance'] += money
 
 
@@ -28,13 +28,16 @@ def run(input_file: str, output_file: str) -> None:
         order_code = product_info[0]
         match order_code:
             case 'O':
-                order_product(vending_machine, product_info[1], product_info[2], product_info[3])
+                order_product(
+                    vending_machine, product_info[1], int(product_info[2]), int(product_info[3])
+                )
             case 'R':
-                replace_product(vending_machine, product_info[1], product_info[2])
+                replace_product(vending_machine, product_info[1], int(product_info[2]))
             case 'P':
-                change_price(vending_machine, product_info[1], product_info[2])
+                change_price(vending_machine, product_info[1], int(product_info[2]))
             case 'M':
-                push_money(vending_machine, product_info[1])
+                push_money(vending_machine, int(product_info[1]))
+
     with open(output_file, 'w') as after_orders:
         after_orders.write(f'{vending_machine["balance"]}')
 
