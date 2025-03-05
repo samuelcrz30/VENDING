@@ -22,10 +22,13 @@ def run(input_file: str, output_file: str) -> None:
             vending_machine['products'][product]['price'] = int(price)
         else:
             print(f'OP{index}: PRODUCT NOT FOUND')
-
+            
+    
     def push_money(money):
         vending_machine['balance'] += money
 
+
+    # esto no hace falta hacerlo así
     def error_unknown_operation():
         return 'UNKNOWN OPERATION'
 
