@@ -60,4 +60,9 @@ def run(input_file: str, output_file: str) -> None:
                     error_not_enough_user_money()
        
     with open(output_file, 'w') as after_orders:
-        after_orders.write(f'{vending_machine["balance"]}')
+        after_orders.write(f'{vending_machine["balance"]}\n')
+        products = list(vending_machine['products'].keys())
+        for product in products:
+            stock = vending_machine['products'][product]['stock']
+            price = vending_machine['products'][product]['price']
+            after_orders.write(f'{product} {stock} {price}\n')
