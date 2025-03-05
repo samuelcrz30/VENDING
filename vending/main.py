@@ -26,8 +26,7 @@ def run(input_file: str, output_file: str) -> None:
     
     def push_money(money):
         vending_machine['balance'] += money
-
-
+        
     # esto no hace falta hacerlo así
     def error_unknown_operation():
         return 'UNKNOWN OPERATION'
@@ -41,8 +40,10 @@ def run(input_file: str, output_file: str) -> None:
     def error_not_enough_user_money():
         return print('NOT ENOUGH USER MONEY')
 
+
     with open(input_file, 'r') as orders_data:
         POSSIBLE_ORDER_CODES = 'ORPM'
+        #tenemos que hacer el bucle para recorrer el todas las lineas, si no solo da la primera
         for index, line in enumerate(orders_data, start=1):
             product_info = orders_data.readline().split()
             order_code = product_info[0]
@@ -58,7 +59,7 @@ def run(input_file: str, output_file: str) -> None:
                     case 'M':
                         push_money(int(product_info[1]))
             else:
-                # esto no tiene sentido porque si entra por la O, entra por la O de arriba
+                # esto no tiene sentido porque si entra por la O, entra por la O de arriba(case _)
                 if order_code not in POSSIBLE_ORDER_CODES:
                     error_unknown_operation()
                 if order_code == 'O':
@@ -80,8 +81,7 @@ def run(input_file: str, output_file: str) -> None:
             stock = vending_machine['products'][product]['stock']
             price = vending_machine['products'][product]['price']
             after_orders.write(f'{product} {stock} {price}\n')
-
-
+            
 # DO NOT TOUCH THE CODE BELOW
 if __name__ == '__main__':
     import vendor
